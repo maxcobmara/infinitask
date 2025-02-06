@@ -83,6 +83,7 @@ test:
 production:
   primary: &primary_production
     <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
     database: infinitask_production
     username: infinitask
     password: <%= ENV["INFINITASK_DATABASE_PASSWORD"] %>
