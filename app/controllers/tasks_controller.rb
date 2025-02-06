@@ -14,6 +14,7 @@ class TasksController < ApplicationController
     else
       @tasks = @tasks.where(completed: false)
     end
+    @tasks = @tasks.page params[:page]
     
   end
 

@@ -28,20 +28,39 @@
 
 </div>
 <h1>Tasks</h1>
-<%= link_to(new_task_path) do %>
-  <div class="btn btn-primary position-relative">
-    <i class="fa-solid fa-plus"></i> New Task
+<div id="tasks" class="row">
+  <div class="col-3">
+    <%= link_to(new_task_path) do %>
+      <div class="btn btn-primary position-relative">
+        <i class="fa-solid fa-plus"></i> New Task
+      </div>
+    <% end %>
   </div>
-<% end %>
-<div id="tasks">
-  <% if notice %>
-  <div class="alert alert-success" role="alert">
-    <%= notice %>
+  <div class="col-6">
+    <%= paginate @tasks %>
   </div>
-  <% end %>
   
-  <% @tasks.each do |task| %>
-    <%= render task %>
-  <% end %>
+  <div class="row">
+    <div class="col-12">
+      <% if notice %>
+        <div class="alert alert-success" role="alert">
+          <%= notice %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <% @tasks.each do |task| %>
+      <%= render task %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-6 offset-md-3">
+    <%= paginate @tasks %>
+  </div>
 </div>
 

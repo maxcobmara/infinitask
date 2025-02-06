@@ -1,5 +1,7 @@
 class Task < ApplicationRecord
   
+  paginates_per 25
+  
   validates :title, presence: true
   
   
