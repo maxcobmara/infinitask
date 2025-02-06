@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :set_task, only: %i[ show edit update destroy ]
+  before_action :set_task, only: %i[ show edit update complete destroy ]
 
   # GET /tasks or /tasks.json
   def index
@@ -56,6 +56,11 @@ class TasksController < ApplicationController
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def complete
+    @task.update(completed: "true")
+    redirect_to root_path, notice: "Task <strong>#{@task.title.titleize}</strong> was marked as completed", flash: { html_safe: true }
   end
 
   # DELETE /tasks/1 or /tasks/1.json
