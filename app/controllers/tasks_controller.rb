@@ -3,7 +3,18 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = Task.all
+    @completed = Task.where(completed: true).count
+    @todo      = Task.where(completed: false).count
+    
+    @tasks = Task.order(created_at: :desc)
+    if params[:status] == "completed"
+      @tasks = @tasks.where(completed: true)
+    elsif params[:status] == "all"
+      @tasks
+    else
+      @tasks = @tasks.where(completed: false)
+    end
+    
   end
 
   # GET /tasks/1 or /tasks/1.json

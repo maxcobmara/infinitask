@@ -12,5 +12,19 @@ $fa-font-path: ".";
 @import "@fortawesome/fontawesome-free/scss/v4-shims";
 
 //custom 
+$bpink: #E9168C;
+$completed: #DABFFF;
 
-.task-row  {padding-bottom: 1em; padding-top: 0.5em; border-bottom: solid 1px #CCC;}
+.navbar {background-color: $bpink;}
+.container {width:70%; padding-top: 2em;}
+.right {float:right;}
+.filter {margin-right:20px;}
+#tasks {padding-top:2em;}
+
+p  {font-size: 12pt; font-weight:250;}
+h4 {font-weight:bold; font-size:1.2em;}
+
+.card-header {text-align: right;}
+.card-footer {font-size: 10pt; font-weight:250;}
+.status_completed {background-color: $completed;}
+

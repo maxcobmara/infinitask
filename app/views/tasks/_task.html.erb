@@ -1,18 +1,24 @@
 <div id="<%= dom_id task %>">
-  <div class="container text-left">
-    <div class="row task-row justify-content-md-center">
-      <div class="col col-lg-2">
-        <%= task.title %>
+  <div class="card mb-3 status_<%= task.status %>">
+    <div class="card-body">
+      <h4><%= task.title.titleize %></h4>
+      <blockquote class="blockquote mb-0">
+        <p><%= task.description %></p>
+      </blockquote>
+    </div>
+    <div class="card-footer text-body-secondary">
+      <div class="btn-group btn-group-sm right">
+        <% if task.status == "todo" %>
+          <%= link_to ('<i class="fa-solid fa-check"></i>').html_safe, edit_task_path(task), class: "btn btn-light", data: {toggle: "tooltip", placement: "bottom"}, "title"=> "Mark as Done" %>
+          <%= link_to ('<i class="fa-solid fa-pencil"></i>').html_safe, edit_task_path(task), class: "btn btn-light", data: {toggle: "tooltip", placement: "bottom"}, "title"=> "Edit Task" %>
+        <% end %>
+        <%= button_to ('<i class="fa-solid fa-trash-can"></i>').html_safe, task, data: {turbolinks: false, confirm: "Are you sure?" }, method: :delete, class: "btn btn-light btn-sm", data: {toggle: "tooltip", placement: "bottom"}, "title"=> "Delete Task" %>
       </div>
-      <div class="col col-lg-4">
-        <%= task.description %>
-      </div>
-      <div class="col col-lg-2">
-        <%= task.completed? ? '<i class="fa-solid fa-check"></i>'.html_safe : "" %>
-      </div>
-      <div class="col col-lg-2">
-        <%= link_to "Show this task", task %>        
-      </div>
+      <% if task.status == "todo" %>
+        Created <%= time_ago_in_words task.created_at %> ago
+      <% else %>
+        Completed <%= time_ago_in_words task.updated_at %> ago
+      <% end %>
     </div>
   </div>
 </div>

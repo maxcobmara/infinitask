@@ -23,7 +23,7 @@ puts "Creating Tasks ...."
     
   Task.create!([{
     title: Faker::Company.bs,
-    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
+    description: Faker::Lorem.paragraph(sentence_count: 4, supplemental: false, random_sentences_to_add: 4),
     completed: status,
     created_at: log_date,
     updated_at: update_date

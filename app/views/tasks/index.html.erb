@@ -1,28 +1,47 @@
-<p style="color: green"><%= notice %></p>
+<p style="color: green"></p>
 
 <% content_for :title, "Tasks" %>
 
-<h1>Tasks</h1>
 
-<div id="tasks">
-  <div class="container text-left">
-    <div class="row g2 justify-content-md-center">
-      <div class="col col-lg-2">
-        <strong>Title:</strong>
-      </div>
-      <div class="col col-lg-4">
-        <strong>Description:</strong>
-      </div>
-      <div class="col col-lg-2">
-        <strong>Completed:</strong>
-      </div>
-      <div class="col col-lg-2">
-      </div>
+<div class="btn-group btn-group-sm right">
+  <%= link_to(tasks_path(status: "all")) do %>
+    <div class="btn btn-light position-relative filter">
+      <i class="fa-solid fa-filter-circle-xmark"></i> All
     </div>
+  <% end %>
+  <%= link_to(tasks_path) do %>
+    <div class="btn btn-light position-relative filter">
+      <i class="fa-solid fa-filter"></i> To Do
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <%= @todo %>
+      </span>
+    </div>
+  <% end %>
+  <%= link_to(tasks_path(status: "completed")) do %>
+    <div class="btn btn-light position-relative filter">
+      <i class="fa-solid fa-filter"></i> Completed
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        <%= @completed %>
+      </span>
+    </div>
+  <% end %>
+
+</div>
+<h1>Tasks</h1>
+<%= link_to(new_task_path) do %>
+  <div class="btn btn-light position-relative">
+    <i class="fa-solid fa-plus"></i> New Task
   </div>
+<% end %>
+<div id="tasks">
+  <% if notice %>
+  <div class="alert alert-success" role="alert">
+    <%= notice %>
+  </div>
+  <% end %>
+  
   <% @tasks.each do |task| %>
     <%= render task %>
   <% end %>
 </div>
 
-<%= link_to "New task", new_task_path %>
