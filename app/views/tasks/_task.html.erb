@@ -1,17 +1,18 @@
 <div id="<%= dom_id task %>">
-  <p>
-    <strong>Title:</strong>
-    <%= task.title %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= task.description %>
-  </p>
-
-  <p>
-    <strong>Completed:</strong>
-    <%= task.completed %>
-  </p>
-
+  <div class="container text-left">
+    <div class="row task-row justify-content-md-center">
+      <div class="col col-lg-2">
+        <%= task.title %>
+      </div>
+      <div class="col col-lg-4">
+        <%= task.description %>
+      </div>
+      <div class="col col-lg-2">
+        <%= task.completed? ? '<i class="fa-solid fa-check"></i>'.html_safe : "" %>
+      </div>
+      <div class="col col-lg-2">
+        <%= link_to "Show this task", task %>        
+      </div>
+    </div>
+  </div>
 </div>

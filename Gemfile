@@ -30,6 +30,8 @@ gem "solid_cache"
 gem "solid_queue"
 gem "solid_cable"
 
+gem 'faker', '~> 3.5', '>= 3.5.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 

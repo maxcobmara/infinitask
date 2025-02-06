@@ -5,11 +5,23 @@
 <h1>Tasks</h1>
 
 <div id="tasks">
+  <div class="container text-left">
+    <div class="row g2 justify-content-md-center">
+      <div class="col col-lg-2">
+        <strong>Title:</strong>
+      </div>
+      <div class="col col-lg-4">
+        <strong>Description:</strong>
+      </div>
+      <div class="col col-lg-2">
+        <strong>Completed:</strong>
+      </div>
+      <div class="col col-lg-2">
+      </div>
+    </div>
+  </div>
   <% @tasks.each do |task| %>
     <%= render task %>
-    <p>
-      <%= link_to "Show this task", task %>
-    </p>
   <% end %>
 </div>
 
