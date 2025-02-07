@@ -1,6 +1,6 @@
 # README
 
-Users postgresql in development and production ensure 
+**Uses postgresql in development and production.**
 
 Setup
 
